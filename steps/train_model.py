@@ -8,23 +8,19 @@ from.config import ModelNameConfig
 @step
 def training(
     xtrain: pd.DataFrame,
+    ytrain: pd.DataFrame,
     xtest: pd.DataFrame,
-    ytrain: pd.Series,
-    ytest: pd.Series, 
+    ytest: pd.DataFrame,
     config: ModelNameConfig
 ) -> RegressorMixin:
     
     
-    model = None
-    
     try:
-        if config.model_name == "Linear Regression":
-            model - LinearRegressionModel()
-            trained_model = model.train(xtrain, ytrain)
-            return trained_model
-        
-        else: 
-            raise ValueError("Model not supported")
+
+        model = LinearRegressionModel()
+        trained_model = model.train(xtrain, ytrain)
+        return trained_model
+
             
     except Exception as e:
-        logging.error(f"Model training not supported {e}")
+        logging.error(f"Erorr in model training {e}")

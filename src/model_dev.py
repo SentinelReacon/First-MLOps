@@ -16,10 +16,10 @@ class Model(ABC):
 
 class LinearRegressionModel(Model):
     
-    def train(xtrain, ytrain):
+    def train(self, xtrain, ytrain, **kwargs):
         
         try:
-            lr = LinearRegression()
+            lr = LinearRegression(**kwargs)
             lr.fit(xtrain, ytrain)
             logging.info("Model training completed")
             

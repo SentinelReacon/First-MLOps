@@ -29,6 +29,8 @@ def cleaning(df: pd.DataFrame) -> Tuple[
         xtrain, xtest, ytrain, ytest = data_splitting.handle_data()
         logging.info("Data Cleaning and Splittin completed")
         
+        return xtrain, xtest, ytrain, ytest
+        
     except Exception as e:
         logging.error(f"Error in Data pre processing and cleaning {e}")
         raise e

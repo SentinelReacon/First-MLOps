@@ -5,7 +5,13 @@ from src.evaluation import MSE
 from sklearn.base import RegressorMixin
 from typing_extensions import Annotated
 
-@step
+import mlflow
+from zenml.client import Client
+
+experiment_tracker = Client().active_stack.experiment_tracker
+
+
+@step(experiment_tracker=experiment_tracker.name)
 def evaluate(
     model: RegressorMixin,
     xtest: pd.DataFrame,
@@ -16,6 +22,7 @@ def evaluate(
         pred = model.predict(xtest)
         mse = MSE()
         mse_score = mse.calculate_score(ytest, pred)
+        mlflow.log_metric("Mean Squared Error score", mse_score)
         
         return mse_score
     

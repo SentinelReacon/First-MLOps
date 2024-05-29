@@ -1,4 +1,4 @@
-# this python file will contain all the steps which will help me to ingest the data
+# this python file will contain all the steps which will help me read the data and convert to dataframe
 
 import logging 
 import pandas as pd

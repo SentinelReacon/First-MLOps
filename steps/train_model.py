@@ -34,4 +34,4 @@ def training(
 
             
     except Exception as e:
-        logging.error(f"Erorr in model training {e}")
+        logging.error(f"Error in model training {e}")
